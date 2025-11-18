@@ -24,7 +24,7 @@ before you go and install our web app onto the host.
 ### **1c. Clone repository into correct directory**
 To make our jobs easier, we keep all of our HTML related files in a single central repository
 in GitHub. It is available at: 
-- "https://github.com/Red-Hat-Academy-Texas-A-M-University/RH124_Lab5_Virtualization-and-Containers"
+- https://github.com/Red-Hat-Academy-Texas-A-M-University/RH124_Lab6_Virtualization-and-Containers.git
 Go ahead and clone the repo into the default directory which Apache looks for your website:
 - /var/www/html/
 *Hint: How do you "git" a remote repository?*
