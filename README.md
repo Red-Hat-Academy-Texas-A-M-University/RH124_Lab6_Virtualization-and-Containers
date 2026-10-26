@@ -1,1 +1,1 @@
-# RH124_Lab6_Virtualiztion-and-Containers
+# RH124_Lab6_Virtualization-and-Containers

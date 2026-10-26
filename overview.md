@@ -1,4 +1,4 @@
-# **Subject:** RE: Vitualization & Containers
+# **Subject:** RE: Virtualization & Containers
 
 Howdy team,
 
@@ -19,7 +19,8 @@ is called "httpd"*
 ### **1b. Test that your server is running**
 To save yourself a step in troubleshooting, make sure that the web server is up and running
 before you go and install our web app onto the host.
-*Hint: You may want to "curl" your server (localhost) to achieve this*
+*Hint: Installing a service does not start it. Use "systemctl" to start (and enable) httpd,
+then you may want to "curl" your server (localhost) to check it*
 
 ### **1c. Clone repository into correct directory**
 To make our jobs easier, we keep all of our HTML related files in a single central repository
@@ -27,30 +28,33 @@ in GitHub. It is available at:
 - https://github.com/Red-Hat-Academy-Texas-A-M-University/RH124_Lab6_Web-App.git
 Go ahead and clone the repo into the default directory which Apache looks for your website:
 - /var/www/html/
-*Hint: How do you "git" a remote repository?*
+*Hint: How do you "git" a remote repository? You will need root privileges to write to /var/www/html/*
 
 ### **1d. Check out your web app again**
 Now that our application is on the host, verify that it is up and running once more.
 It will now be under:
-- http://localhost/RH124_Lab6_Virtualization-and-Containers/api.txt
+- http://localhost/RH124_Lab6_Web-App/api.txt
 
 ---
 ## **2. Deploy Using Docker**
 
 ### **2a. Run web-app container remotely**
-Our developer team has been kind of enough to pre-package the new version of our web-app
+Our developer team has been kind enough to pre-package the new version of our web-app
 using a docker image. You can get it from:
 - quay.io/krieg/rh124_lab6
 To run it on the remote host that we have, 10.2.0.103, you will require the flag to run on a different host
 - docker -H tcp://10.2.0.103:2375 <command>
 It will come out to look something like this. Remember the -d flag to detach immediately from the container
-You will also need to run the web-app on an arbitrary port between 1000-65536, for this demonstration at least
+You will also need to run the web-app on an arbitrary port between 1024-65535 (avoid 2375, the Docker API port). The host is shared, so if your port is already taken, pick another one
 - docker -H tcp://10.2.0.103:2375 run -d -p <port-of-your-choosing>:80 quay.io/krieg/rh124_lab6
 
 ### **2b. Test your web-app**
 Now that we have the container running, test the web-app once again, this time using the host IP address
 and remote port in your curl command
 - curl http://10.2.0.103:<port-you-chose>
+
+When you're done, check your work with:
+- cd ~/RH124_Lab6_Virtualization-and-Containers && ./grade.sh <port-you-chose>
 
 
 ---
